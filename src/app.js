@@ -28,9 +28,25 @@ app.use('/admin',auth);
 //     res.send('admin route')
 // })
 
+// app.get('/admin',auth,(req,res)=>{
+//     console.log("new way ");
+//     res.send("new route");
+// })
+
+// error handler 
+
+
 app.get('/admin',auth,(req,res)=>{
-    console.log("new way ");
-    res.send("new route");
+    // console.log("new way ");
+    // res.send("new route");
+    throw new Error('bhbhjfb');
+    res.send('admin response ');
+})
+
+app.use('/',(err,req,res,next)=>{
+    if(err){
+        res.status(500).send('something went wrong')
+    }
 })
 
 
